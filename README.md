@@ -205,11 +205,55 @@ SkillLink-combined/
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions to **SkillLink**, a fullstack gaming gig platform built with React.js and FastAPI.
+
+### 🛠 Tech Overview
+
+- **Frontend**: React.js (in `/frontend`)
+- **Backend**: FastAPI (in `/backend/app`)
+- **Database**: MongoDB (setup scripts in `/scripts`, models in `/backend/db`)
+
+### 📌 Contribution Workflow
+
+1. **Fork the repository**  
+   Click the “Fork” button on the top-right of this repo to create your own copy.
+
+2. **Clone your fork locally**
+   ```bash
+   git clone https://github.com/<your-username>/SkillLink-combined.git
+   cd SkillLink-combined
+
+Create a new feature branch
+git checkout -b feature/your-feature-name
+
+Make your changes
+💻 Frontend: Work inside /frontend
+
+🧠 Backend: Work inside /backend/app
+
+🧪 Tests: Add to /backend/__tests__ if needed
+
+⚙️ Scripts: Place any database setup/migration utilities in /scripts
+
+Commit your changes
+git add .
+git commit -m "feat: add your feature name"
+
+Push to your fork
+git push origin feature/your-feature-name
+
+Open a Pull Request
+Go to your fork on GitHub
+Click “Compare & pull request”
+Add a clear title and description
+Mention any related issues if applicable
+
+✅ Contribution Tips
+Follow existing coding conventions and folder structure
+Keep commits clean and descriptive
+Include tests where appropriate
+For large changes, open an Issue or Discussion first to align with the maintainers
+We appreciate your interest in improving SkillLink!
 
 ## 📝 License
 
