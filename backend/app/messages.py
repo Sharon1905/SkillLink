@@ -3,9 +3,9 @@ from typing import List, Optional
 from datetime import datetime, timezone
 from bson import ObjectId
 from bson.errors import InvalidId
-from db.database import db
+from database import db
 import models
-from users import get_current_user # Import get_current_user
+from auth import get_current_user # Import get_current_user from auth
 from schemas import MessageCreate, ConversationCreate, ConversationOut, MessageOut # Import new schemas
 
 router = APIRouter()

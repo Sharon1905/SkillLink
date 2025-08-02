@@ -8,7 +8,7 @@ from starlette.staticfiles import StaticFiles
 sys.path.append(str(Path(__file__).parent.parent))
 
 # Import all routers
-import users, gigs, applications, endorsements, nft, messages, wallet # Ensure messages is imported
+import users, gigs, applications, endorsements, nft, messages, wallet, auth # Import auth router
 
 app = FastAPI()
 
@@ -19,6 +19,9 @@ origins = [
     "http://127.0.0.1:5173",  # Another common localhost variation for frontend
     "http://localhost:8000",
     "http://127.0.0.1:8000",
+    "https://*.railway.app",  # Allow Railway domains
+    "https://*.vercel.app",   # Allow Vercel domains
+    "*"  # Allow all origins for development
 ]
 
 app.add_middleware(
@@ -34,6 +37,7 @@ app.add_middleware(
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 # Include all routers
+app.include_router(auth.router)  # Include auth router first
 app.include_router(users.router)
 app.include_router(gigs.router)
 app.include_router(applications.router)

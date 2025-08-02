@@ -1,10 +1,10 @@
 from fastapi import APIRouter, HTTPException, Query, status, Depends
-from db.database import db
+from database import db
 from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime, timezone
 import models # Import models
-from users import get_current_user # Import get_current_user
+from auth import get_current_user # Import get_current_user from auth
 
 router = APIRouter()
 

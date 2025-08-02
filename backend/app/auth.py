@@ -1,5 +1,5 @@
 from passlib.context import CryptContext
-from fastapi import Depends, HTTPException, status # Import status
+from fastapi import Depends, HTTPException, status, APIRouter # Import APIRouter
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 from jose.exceptions import ExpiredSignatureError, JWTError
@@ -7,6 +7,9 @@ import os
 from datetime import datetime, timezone, timedelta
 import models # Import models to access User model
 from bson import ObjectId
+from database import db
+
+router = APIRouter(prefix="/auth", tags=["auth"])  # Create router with /auth prefix
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # It's recommended to load SECRET_KEY from environment variables for security
@@ -62,3 +65,24 @@ def verify_player(current_user: models.User = Depends(get_current_user)): # Use 
     if current_user.user_type != "player": # Access via .user_type if it's a Pydantic model
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Only players can access this route.")
     return current_user
+
+from fastapi import Form
+
+@router.post("/login")
+async def login(email: str = Form(...), password: str = Form(...)):
+    user = await db.users.find_one({"email": email.lower()})
+    if not user or not verify_password(password, user["hashed_password"]):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password"
+        )
+    
+    access_token = create_access_token(
+        data={
+            "id": str(user["_id"]),
+            "email": user["email"],
+            "user_type": user["user_type"],
+            "username": user.get("username", "Unknown")
+        }
+    )
+    return {"access_token": access_token, "token_type": "bearer"}

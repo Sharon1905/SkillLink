@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends, Query, status
-from db.database import db
+from database import db
 from schemas import ApplicationCreate
 import models # Import models module
-from users import get_current_user # Only import get_current_user from users
+from auth import get_current_user # Import get_current_user from auth
 from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime, timezone # Import timezone

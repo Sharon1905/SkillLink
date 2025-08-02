@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, status, UploadFile, File
-from db.database import db
+from database import db
 from schemas import UserCreate, UserOut, UserLogin, UserUpdate
 from auth import hash_password, verify_password, create_access_token, get_current_user
 import models # Import the models module
@@ -30,17 +30,7 @@ async def register_user(user: UserCreate):
     created_user = await db["users"].find_one({"_id": new_user.inserted_id})
     return models.user_helper(created_user)
 
-@router.post("/login")
-async def login(user: UserLogin):
-    user_from_db = await db["users"].find_one({"email": user.email})
-    if not user_from_db:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found.")
-    
-    if not verify_password(user.password, user_from_db["hashed_password"]):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect password.")
-    
-    token = create_access_token({"id": str(user_from_db["_id"]), "email": user_from_db["email"], "user_type": user_from_db["user_type"]})
-    return {"access_token": token, "token_type": "bearer"}
+# Removed duplicate login endpoint - using /auth/login instead
 
 @router.get("/me", response_model=UserOut)
 async def get_my_profile(current_user: models.User = Depends(get_current_user)):

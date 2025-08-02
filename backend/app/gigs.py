@@ -2,9 +2,9 @@ from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List, Optional
 from datetime import datetime, timezone
 from bson import ObjectId
-from db.database import db
+from database import db
 import models # Import models module
-from users import get_current_user
+from auth import get_current_user
 from schemas import GigCreate, GigUpdate, GigOut # Correct: GigCreate and GigUpdate are from schemas
 
 router = APIRouter()

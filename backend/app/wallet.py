@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends, status
-from db.database import db
-from users import get_current_user
+from database import db
+from auth import get_current_user
 import models
 from bson import ObjectId
 from bson.errors import InvalidId

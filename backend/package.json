@@ -1,0 +1,11 @@
+{
+  "name": "skilllink-backend",
+  "version": "1.0.0",
+  "description": "SkillLink Backend API",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "cd app && uvicorn main:app --host 0.0.0.0 --port $PORT"
+  }
+} 

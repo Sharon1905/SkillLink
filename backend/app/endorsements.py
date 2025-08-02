@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, Query, status
-from db.database import db
+from database import db
 from schemas import EndorsementCreate
-from users import get_current_user # Only import get_current_user
+from auth import get_current_user # Import get_current_user from auth
 import models # Import models module
 from bson import ObjectId
 from bson.errors import InvalidId

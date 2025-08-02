@@ -44,21 +44,23 @@ function Login() {
     };
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 
-          'Content-Type': 'application/json' 
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify(sanitizedFormData),
-        credentials: 'same-origin' // Enhance CSRF protection
+        body: new URLSearchParams({
+          email: sanitizedFormData.email,
+          password: sanitizedFormData.password
+        }),
+        credentials: 'include' // Allow cookies if needed
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error('Invalid credentials. Please check your email and password.');
-      }
-
       const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.detail || 'Invalid credentials. Please check your email and password.');
+      }
       
       // Validate token format before storing
       if (!data.access_token || typeof data.access_token !== 'string') {
