@@ -1,0 +1,107 @@
+# ### Register a new player
+# POST http://localhost:8000/register
+# Content-Type: application/json
+
+# {
+#   "username": "ValorGod",
+#   "email": "valor@example.com",
+#   "password": "val1234",
+#   "user_type": "player"
+# }
+
+# ### Register a new org
+# POST http://localhost:8000/register
+# Content-Type: application/json
+
+# {
+#   "username": "TeamGalaxy",
+#   "email": "galaxy@example.com",
+#   "password": "galaxy123",
+#   "user_type": "org"
+# }
+
+# ### Login as player
+# POST http://localhost:8000/login
+# Content-Type: application/json
+
+# {
+#   "email": "valor@example.com",
+#   "password": "val1234"
+# }
+
+# ### Login as org
+# POST http://localhost:8000/login
+# Content-Type: application/json
+
+# {
+#   "email": "galaxy@example.com",
+#   "password": "galaxy123"
+# }
+
+# ### Get my profile (Auth required)
+# GET http://localhost:8000/me
+# Authorization: Bearer {{PLAYER_TOKEN}}
+
+# ### Update my profile
+# PATCH http://localhost:8000/me
+# Authorization: Bearer {{PLAYER_TOKEN}}
+# Content-Type: application/json
+
+# {
+#   "username": "ValorUpdated"
+# }
+
+# ### Post a new gig
+# POST http://localhost:8000/gigs
+# Authorization: Bearer {{ORG_TOKEN}}
+# Content-Type: application/json
+
+# {
+#   "title": "Sniper for Valorant",
+#   "description": "We need a cracked sniper!",
+#   "location": "India",
+#   "tags": ["valorant", "sniper"]
+# }
+
+# ### Browse gigs
+# GET http://localhost:8000/gigs
+
+# ### View specific gig
+# GET http://localhost:8000/gigs/{{GIG_ID}}
+
+# ### View my gigs
+# GET http://localhost:8000/my_gigs
+# Authorization: Bearer {{ORG_TOKEN}}
+
+# ### Apply to a gig
+# POST http://localhost:8000/apply
+# Authorization: Bearer {{PLAYER_TOKEN}}
+# Content-Type: application/json
+
+# {
+#   "gig_id": "{{GIG_ID}}",
+#   "player_id": "{{PLAYER_ID}}"
+# }
+
+# ### Endorse a player
+# POST http://localhost:8000/endorse
+# Authorization: Bearer {{ORG_TOKEN}}
+# Content-Type: application/json
+
+# {
+#   "endorsed_id": "{{PLAYER_ID}}",
+#   "rating": 5,
+#   "comment": "Cracked aim 🔥"
+# }
+
+# ### View player endorsements
+# GET http://localhost:8000/endorsements/{{PLAYER_ID}}
+
+# ### Mint soulbound NFT
+# POST http://localhost:8000/mint_soulbound_nft?user_id={PLAYER_ID}
+
+# ### View minted NFT
+# GET http://localhost:8000/nft/{{PLAYER_ID}}
+
+# ### Admin stats
+# GET http://localhost:8000/admin/stats

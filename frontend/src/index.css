@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Light background shades */
+  --color-dark-950: oklch(0.98 0 0); /* Almost white */
+  --color-dark-900: oklch(0.96 0 0); /* Very light background */
+  --color-dark-800: oklch(0.94 0 0); /* Light background */
+  --color-dark-700: oklch(0.92 0 0); /* Slightly darker background */
+  --color-dark-600: oklch(0.90 0 0); /* Card background */
+  --color-dark-500: oklch(0.85 0 0); /* Darker card background */
+  --color-dark-400: oklch(0.75 0 0); /* Light text */
+  --color-dark-300: oklch(0.65 0 0); /* Medium text */
+  --color-dark-200: oklch(0.45 0 0); /* Dark text */
+  --color-dark-100: oklch(0.25 0 0); /* Darker text */
+  --color-dark-50: oklch(0.15 0 0);  /* Almost black text */
+  
+  /* ForkYou coral/orange */
+  --color-primary-500: oklch(0.65 0.2 30); /* Coral/orange */
+  --color-primary-600: oklch(0.55 0.2 30); /* Darker coral/orange */
+  
+  /* Accent color */
+  --color-accent-500: oklch(0.65 0.2 30); /* Same as primary */
+  
+  --font-sans: "Montserrat", sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-dark-900);
+    color: var(--color-dark-100);
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-dark-50);
+    font-weight: bold;
+  }
+
+  a {
+    color: var(--color-accent-500);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  button {
+    transition-property: color, background-color, border-color;
+    transition-duration: 200ms;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.font-valorant {
+  font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
