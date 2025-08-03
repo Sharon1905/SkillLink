@@ -65,7 +65,7 @@ railway domain
 
 ### Backend (.env)
 ```
-MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/database
+MONGO_URL=mongodb+srv://your-username:your-password@your-cluster.mongodb.net/your-database
 MONGO_DB_NAME=versatile_db
 SECRET_KEY=your-super-secret-key-here
 PORT=8000

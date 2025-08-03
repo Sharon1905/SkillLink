@@ -102,7 +102,7 @@ A comprehensive platform connecting gaming organizations with skilled players fo
    ```
    VITE_API_BASE_URL=http://localhost:8000
    MONGODB_URL=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret
+   JWT_SECRET=your-super-secret-jwt-key-here
    ```
 
 ## 📁 Project Structure
